@@ -1,0 +1,7 @@
+let ProductFactory = require('./productFactory')
+let productA = ProductFactory.createProduct('ProductA')
+productA.getProduct()
+let productB = ProductFactory.createProduct('ProductB')
+productB.getProduct()
+let productC = ProductFactory.createProduct('C')
+console.log(productC)
