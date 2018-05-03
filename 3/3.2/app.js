@@ -1,7 +1,7 @@
-let http = require('http')
-let fs = require('fs')
-let url = require('url')
-let BASE_DIR = __dirname
+let http = require('http');
+let fs = require('fs');
+let url = require('url');
+let BASE_DIR = __dirname;
 
 http.createServer((req, res) => {
 
@@ -11,16 +11,16 @@ http.createServer((req, res) => {
   // res.end(readFile)
   // ----------------------------------------------
   let pathname = url.parse(req.url).pathname;
-  let readPath = __dirname + '/static' + pathname
+  let readPath = __dirname + '/static' + pathname;
   if (pathname == '/favicon.ico') {
-    return
+    return;
   } else if (pathname === '/index' || pathname === '/') {
-    goIndex(res)
+    goIndex(res);
   } else {
-    dealWithStatic(pathname, readPath, res)
+    dealWithStatic(pathname, readPath, res);
   }
-}).listen(1337)
-console.log('server is running 1337')
+}).listen(1337);
+console.log('server is running 1337');
 
 /**
  * @desc 静态资源
@@ -33,39 +33,39 @@ function dealWithStatic(pathname, readPath, res) {
     if (!exists) {
       res.writeHead(404, {
         'Content-Type': 'text/plain'
-      })
-      res.write(`This request URL ${pathname} was not found on this server`)
-      res.end()
+      });
+      res.write(`This request URL ${pathname} was not found on this server`);
+      res.end();
     } else {
       let pointPosition = pathname.lastIndexOf('.'),
         mmieString = pathname.substring(pointPosition + 1),
         mimeType;
       switch (mmieString) {
         case 'css':
-          mimeType = 'text/css'
+          mimeType = 'text/css';
           break;
         case 'png':
-          mimeType = 'image/png'
+          mimeType = 'image/png';
           break;
         default:
-          mimeType = 'text/plain'
+          mimeType = 'text/plain';
       }
       fs.readFile(readPath, 'binary', (err, file) => {
         if (err) {
           res.writeHead(500, {
             'Content-Type': 'text/plain'
-          })
-          res.end(err)
+          });
+          res.end(err);
         } else {
           res.writeHead(200, {
             'Content-Type': mimeType
-          })
-          res.write(file, 'binary')
-          res.end()
+          });
+          res.write(file, 'binary');
+          res.end();
         }
-      })
+      });
     }
-  })
+  });
 }
 
 // const goIndex = (req, res) => {
@@ -75,7 +75,7 @@ function dealWithStatic(pathname, readPath, res) {
 // }
 
 function goIndex(res) {
-  let readPath = __dirname + '/' + url.parse('index.html').pathname
-  let indexPage = fs.readFileSync(readPath)
-  res.end(indexPage)
+  let readPath = __dirname + '/' + url.parse('index.html').pathname;
+  let indexPage = fs.readFileSync(readPath);
+  res.end(indexPage);
 }
