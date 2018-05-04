@@ -1,0 +1,14 @@
+html
+  head
+    meta(charset="utf-8")
+    title Node.js Upload
+    link(rel="stylesheet", href="./static/index.css")
+  body
+    h1  this is about nodejs static source #{user}
+    div.div1 this is div1
+    img(src="./static/logo.png", alt="")
+    div#main_content
+      div
+        form(action="upload" method="POST" enctype="multipart/form-data")
+          input(type="file" name="image")
+          input#upload(type="submit" value="图片上传")
