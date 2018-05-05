@@ -18,4 +18,22 @@ http.createServer((req, res) => {
   }
   /*获取用户url请求路径 并应用decodeURI解析url中的特殊字符和中字*/
   let pathname = decodeURI(url.parse(req.url).pathname)
-})
+
+  if(pathname == '/favicon.ico') {
+    return ;
+  } 
+
+  //路由处理
+  switch(pathname) {
+    case "/":
+    deafultIndex(res);
+    break;
+    case "/index":
+    defaultIndex(res);
+    break;
+    default:
+    staticModule.getStaticFile(pathname, res, req);
+    break;
+  }
+}).listen(1337)
+

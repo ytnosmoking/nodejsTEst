@@ -12,7 +12,7 @@ mmieConf = getUrlConf();
 let CACHE_TIME = 60 * 60 * 24 * 365;
 
 exports.getStaticFile = function (pathname, res, req) {
-  pathname = decodeURI(pathname)
+  pathname = decodeURI(pathname) //  将静态请求的图片路径含中文 转换
   let extname = path.extname(pathname);
   console.log(extname)
   extname = extname ? extname.slice(1) : '';
