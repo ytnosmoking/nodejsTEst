@@ -1,0 +1,14 @@
+html
+  head
+    meta(charset="utf-8")
+    title Thi is show_img
+    link(rel="stylesheet", href="./static/index.css")
+  body
+    h1 this is about show_image #{showImg}
+    div.div1 
+      | this is show_image1
+      | this is show_image2
+      | this is show_image3
+    div#main_content
+      div#show_image
+        img(src="#{imgUrl}", alt="upload file")

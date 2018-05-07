@@ -1,0 +1,12 @@
+
+body {
+  text-align: center;
+}
+.div1 {
+  font-size: 40px;
+
+  color: red;
+  height: 200px;
+  width: 200px;
+  border: 1px solid #000;
+}
