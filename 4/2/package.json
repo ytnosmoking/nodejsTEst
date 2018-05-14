@@ -1,0 +1,7 @@
+{
+  "name": "nodejs-udp",
+  "version": "1.0",
+  "devDependencies": {
+    "imagemagick": "^0.1.3"
+  }
+}
